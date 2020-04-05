@@ -1,0 +1,50 @@
+<h1>Pages#home</h1>
+<p>Find me in app/views/pages/home.html.erb</p>
+
+
+<%= text_field_tag :queryaddress,
+                  params[:queryaddress],
+                  class: "form-control",
+                    placeholder: "Marseille",
+                    id:'bien_address'
+                    %>
+                    <%= submit_tag "Rechercher", name: "address" %>
+
+<button class="btn btn-primary">CREATE</button>
+<p><%= @tamere %></p>
+<br><br>
+<div
+  id="map"
+  style="width: 100%;
+  height: 600px;"
+  data-markers="<%= @markers.to_json %>"
+  data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+></div>
+
+
+<div class="container">
+  <div>
+  <% @features.each do |hash| %>
+    <div class="row">
+    <%= hash["properties"]["numero_voie"]%>
+    <%= hash["properties"]["type_voie"] %>
+    <%= hash["properties"]["voie"] %>
+    <br>
+    <p></p>
+    <p> Valeur Foncière:
+    <%= hash["properties"]["valeur_fonciere"] %>
+
+</p>
+    </div>
+  <% end %>
+  </div>
+
+</div>
+
+
+
+
+
+<h2>salut</h2>
+
+
